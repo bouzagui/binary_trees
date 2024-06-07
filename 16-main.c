@@ -2,11 +2,6 @@
 #include <stdio.h>
 #include "binary_trees.h"
 
-/* Our own functions */
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
-void binary_tree_print(const binary_tree_t *tree);
-void binary_tree_delete(binary_tree_t *tree);
-
 /**
  * main - Entry point
  *
@@ -28,7 +23,7 @@ int main(void)
 	root->right->right->right = binary_tree_node(root->right->right, 120);
 	root->right->left->left = binary_tree_node(root->right->left, 75);
 	root->right->left->right = binary_tree_node(root->right->left, 85);
-	root->left->right->left = binary_tree_node(root->left->right, 55);
+	/*root->left->right->left = _binary_tree_node(root->left->right, 55);*/
 	/*root->left->right->right = _binary_tree_node(root->left->right, 65);*/
 	root->left->left->left = binary_tree_node(root->left->left, 35);
 	root->left->left->right = binary_tree_node(root->left->left, 45);
@@ -37,6 +32,6 @@ int main(void)
 	printf("Is the tree with root node (%d) perfect? %d\n", root->n, perfect);
 
 	binary_tree_print(root);
-	/*binary_tree_delete(root);*/
+	/*_binary_tree_delete(root);*/
 	return (0);
 }
