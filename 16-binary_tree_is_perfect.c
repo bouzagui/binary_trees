@@ -1,34 +1,28 @@
 #include "binary_trees.h"
 
 /**
- * height - Measures the height of a binary tree
+ * full - Measures the fullness
  * @tree: Pointer to the root node of the tree to measure the height
- * Return: Height of the tree
+ * Return: 1 or 0
  */
 
-int height(const binary_tree_t *tree)
+int full(const binary_tree_t *tree)
 {
-	size_t left, right;
+if (tree == NULL)
+{
+return (0);
+}
 
-	if (tree == NULL)
-	{
-		return (0);
-	}
-	if (tree->left == NULL && tree->right == NULL)
-	{
-		return (0);
-	}
+if (tree->left == NULL && tree->right == NULL)
+{
+return (1);
+}
 
-	left = height(tree->left);
-	right = height(tree->right);
-	if (left > right)
-	{
-		return (left + 1);
-	}
-	else
-	{
-		return (right + 1);
-	}
+if (tree->left != NULL && tree->right != NULL)
+{
+return (full(tree->left) && full(tree->right));
+}
+return (0);
 }
 
 /**
@@ -45,8 +39,8 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	{
 		return (0);
 	}
-	left_height = height(tree->left);
-	right_height = height(tree->right);
+	left_height = full(tree->left);
+	right_height = full(tree->right);
 
 	return (left_height == right_height);
 }
